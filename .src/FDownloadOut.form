@@ -1,0 +1,17 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,61,34)
+  Text = ("Video-D - Downloading")
+  Resizable = False
+  { !TextArea1 TextArea
+    MoveScaled(1,1,59,27)
+    #Public = True
+    ReadOnly = True
+  }
+  { Button_Done Button
+    MoveScaled(47,29,13,4)
+    Text = ("Done")
+    Picture = Picture["icon:/16/ok"]
+  }
+}

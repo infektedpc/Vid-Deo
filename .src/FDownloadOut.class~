@@ -1,0 +1,38 @@
+' Gambas class file
+
+Public VideoD_sOutput As String = ""
+Public Video_URLS As String = ""
+Public Result As String
+  
+Public Sub Button_Done_Click()
+
+  FDownloadOut.close
+
+End
+
+Public Sub Form_Open()
+
+  FDownloadOut.Center
+
+   VideoD_sOutput = ""
+   Video_URLS = FMain.ListBox_VideoURL.List.Join(" ")
+   Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl " & Video_URLS For Read As "Process"
+
+End
+
+Public Sub Process_Read()
+
+  Dim sLine As String
+
+  sLine = Read #Last, -256
+
+  Result &= sLine
+  TextArea1.Text = TextArea1.Text & sLine
+
+End
+
+Public Sub TextArea1_Change()
+
+  TextArea1.Select(TextArea1.Length, TextArea1.Length)
+
+End

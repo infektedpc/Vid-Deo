@@ -1,0 +1,109 @@
+' Gambas class file
+
+'Messages
+Public MSG_No_VideoURL As String = "Please enter a video url"
+Public MSG_Invailed_VideoURL As String = "Invailed video url please use http or https"
+Public MSG_No_SaveTo_Dir As String = "Please select a save to directory"
+Public MSG_No_VideoURLS As String = "Please add one or more video url's"
+
+Public Sub _new()
+  
+End
+
+Public Sub Form_Open()
+  
+  FMain.Center
+  
+End
+
+Public Sub Button_VideoURL_Click()
+  
+  If Not TextBox_VideoURL.Text = "" Then
+    If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
+      ListBox_VideoURL.Add(TextBox_VideoURL.Text)
+      TextBox_VideoURL.Clear
+    Else
+      Message.Info(MSG_Invailed_VideoURL)
+    Endif
+  Else
+    Message.Info(MSG_No_VideoURL)
+  Endif
+  
+End
+
+Public Sub PictureBox_Clear_MouseDown()
+  
+  TextBox_VideoURL.Clear
+  
+End
+
+Public Sub Button_Remove_Click()
+
+  If Not ListBox_VideoURL.Index = -1 Then
+    ListBox_VideoURL.Remove(ListBox_VideoURL.Index)
+  Else
+    Message.Info("TESTING")
+  Endif
+
+End
+
+Public Sub Button_SaveTo_Click()
+  
+  Dialog.Title = "Select A Directory"
+  Dialog.Path = ""
+  
+  If Dialog.SelectDirectory() Then Return
+  TextBox_SaveTo.Text = Dialog.Path
+  
+End
+
+Public Sub Button_OpenFolder_Click()
+  
+  If Not TextBox_SaveTo.Text = "" Then
+    Shell "xdg-open " & TextBox_SaveTo.Text
+  Else
+    Message.Info(MSG_No_SaveTo_Dir)
+  Endif
+  
+End
+
+Public Sub Button_Download_Click()
+  
+ 
+'Dim Video_To_Download As String = ""
+  ' For Each Video_To_Download In 
+       
+     ' Next
+      
+  
+  'If Not TextBox_SaveTo.Text = "" Then
+  'If Not ListBox_VideoURL.Count = -1 Then
+      FDownloadOut.Show
+      
+
+  'Print Video_URLS
+  'Print "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl " & Video_URLS
+ 
+ 'TextArea1.Text = FMain.VideoD_sOutput
+  'Else
+   ' Message.Info(MSG_No_VideoURLS)
+ ' Endif
+  '  Else
+    ' Message.Info(MSG_No_SaveTo_Dir)
+   '   Endif
+' Get the contents of a directory in background
+
+
+
+'Shell "ls -la /tmp" For Read As "Process"
+
+
+End
+
+
+
+Public Sub Button_Close_Click()
+  
+  FMain.Close
+  
+End
