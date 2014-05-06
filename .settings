@@ -6,10 +6,10 @@ Count=0
 
 [OpenFile]
 File[1]=".src/FMain.form"
-File[2]=".src/FMain.class:1.0"
+File[2]=".src/FMain.class:52.3"
+Active=3
 File[3]=".src/FDownloadOut.form"
-Active=4
-File[4]=".src/FDownloadOut.class:36.0"
+File[4]=".src/FDownloadOut.class:3.32"
 Count=4
 
 [Watches]

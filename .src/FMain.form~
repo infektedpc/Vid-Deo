@@ -1,8 +1,9 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,61,51)
+  MoveScaled(0,0,61,34)
   Text = ("Video-D")
+  Icon = Picture["Videod128x-icon.png"]
   Resizable = False
   { Label_Video Label
     MoveScaled(1,2,11,4)
@@ -44,7 +45,7 @@
     #Public = True
   }
   { !Button_Download Button
-    MoveScaled(23,29,16,4)
+    MoveScaled(22,29,16,4)
     #Public = True
     Text = ("Download")
     Picture = Picture["icon:/16/internet"]
@@ -58,7 +59,14 @@
     MoveScaled(56,7,4,4)
     Picture = Picture["icon:/16/remove"]
   }
-  { TextArea1 TextArea
-    MoveScaled(1,34,59,16)
+  { PictureBox1 PictureBox
+    MoveScaled(2,7,8,8)
+    Picture = Picture["Videod128x-icon.png"]
+    Stretch = True
+  }
+  { ComboBox1 ComboBox
+    MoveScaled(1,16,10,4)
+    ReadOnly = True
+    List = [("Mp4"), ("Webm")]
   }
 }

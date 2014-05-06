@@ -2,37 +2,73 @@
 
 Public VideoD_sOutput As String = ""
 Public Video_URLS As String = ""
-Public Result As String
-  
+'Public Result As String
+
 Public Sub Button_Done_Click()
-
+  
   FDownloadOut.close
-
+  
 End
 
 Public Sub Form_Open()
-
+  
   FDownloadOut.Center
-
-   VideoD_sOutput = ""
-   Video_URLS = FMain.ListBox_VideoURL.List.Join(" ")
-   Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl " & Video_URLS For Read As "Process"
-
+  
+  VideoD_sOutput = ""
+  Video_URLS = FMain.ListBox_VideoURL.List.Join(" ")
+  If Fmain.ComboBox1.index = 0 Then
+    Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl -f mp4 " & Video_URLS & "&& echo Finished" For Read As "Process"
+  Else
+    Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl -f webm " & Video_URLS & "&& echo Finished" For Read As "Process"
+  Endif
+  
 End
 
 Public Sub Process_Read()
-
+  
   Dim sLine As String
-
+  
   sLine = Read #Last, -256
-
-  Result &= sLine
+  
+  'Result &= sLine
+  
   TextArea1.Text = TextArea1.Text & sLine
-
+  If sLine = "Finished\n" Then
+    Button_Cancel.Enabled = False
+    Button_Done.Enabled = True
+  Endif
+  
 End
 
 Public Sub TextArea1_Change()
+  
+  TextArea1.Select(TextArea1.Length, 0)
+  
+End
 
-  TextArea1.Select(TextArea1.Length, TextArea1.Length)
+Public Sub Form_Close()
+  
+  FMain.Button_Download.Enabled = True
+  
+End
 
+Public Sub Button_Cancel_Click()
+  
+  If isRunning("youtube-dl") = True Then
+    If Message.Question("There are videos currently downloading.\n Do you want to cancel the download?", "Yes", "No") = 1 Then
+      Shell "killall -SIGTERM youtube-dl"
+      FDownloadOut.Close
+    Endif
+  Endif
+  
+End
+
+Public Function isRunning(sProcess As String) As Boolean
+  
+  Dim sOutput As String
+  
+  Exec ["pgrep", "-x", "-c", Shell(sProcess)] To sOutput
+  If CInt(Trim(sOutput)) > 0 Then Return True
+  Return False
+  
 End
