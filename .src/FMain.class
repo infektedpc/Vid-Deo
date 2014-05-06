@@ -23,16 +23,7 @@ End
 
 Public Sub Button_VideoURL_Click()
   
-  If Not TextBox_VideoURL.Text = "" Then
-    If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
-      ListBox_VideoURL.Add(TextBox_VideoURL.Text)
-      TextBox_VideoURL.Clear
-    Else
-      Message.Info(MSG_Invailed_VideoURL)
-    Endif
-  Else
-    Message.Info(MSG_No_VideoURL)
-  Endif
+  Add_VideoURL
   
 End
 
@@ -91,4 +82,78 @@ Public Sub Button_Close_Click()
   
   FMain.Close
   
+End
+
+Public Sub Button_Up_Click()
+  
+  Dim tmp As String
+  Dim i As Integer
+  
+  If Not ListBox_VideoURL.Count <= 1 Then
+    If ListBox_VideoURL.Index > 0 Then
+      tmp = ListBox_VideoURL.Text
+      i = ListBox_VideoURL.Index
+      ListBox_VideoURL.Remove(i)
+      ListBox_VideoURL.Add(tmp, i - 1)
+      ListBox_VideoURL.Index = i - 1
+      ListBox_VideoURL.SetFocus
+    End If
+  End If
+  
+End 
+
+Public Sub Button_Down_Click()
+  
+  Dim tmp As String
+  Dim i As Integer
+  
+  If Not ListBox_VideoURL.Count <= 1 Or ListBox_VideoURL.Index < 0 Then
+    If ListBox_VideoURL.Index < (ListBox_VideoURL.Count - 1) Then
+      tmp = ListBox_VideoURL.Text
+      i = ListBox_VideoURL.Index
+      ListBox_VideoURL.Remove(i)
+      ListBox_VideoURL.Add(tmp, i + 1)
+      ListBox_VideoURL.Index = i + 1
+      ListBox_VideoURL.SetFocus
+    End If 
+  End If 
+  
+End
+
+Public Sub TextBox_VideoURL_KeyPress()
+  
+  
+  If Key.code = Key.Return Then
+    Add_VideoURL
+  Endif
+
+End
+
+Public Sub Add_VideoURL()
+  
+  If Not TextBox_VideoURL.Text = "" Then
+    If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
+      ListBox_VideoURL.Add(TextBox_VideoURL.Text)
+      TextBox_VideoURL.Clear
+      ListBox_VideoURL.Index = ListBox_VideoURL.Count - 1
+      ListBox_VideoURL.SetFocus
+      Else
+      Message.Info(MSG_Invailed_VideoURL)
+    Endif
+  Else
+    Message.Info(MSG_No_VideoURL)
+  Endif
+  
+End
+
+Public Sub Button_About_Click()
+
+  FAbout.Show
+
+End
+
+Public Sub Button_Help_Click()
+
+  FHelp.Show
+
 End

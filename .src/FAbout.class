@@ -1,0 +1,14 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+  FAbout.Center
+
+End
+
+Public Sub Button_OK_Click()
+
+  FAbout.Close
+
+End

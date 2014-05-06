@@ -1,0 +1,15 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,30)
+  Text = ("Video-D - About")
+  Icon = Picture["Videod128x-icon.png"]
+  { TextArea1 TextArea
+    MoveScaled(0,0,65,24)
+  }
+  { Button_OK Button
+    MoveScaled(47,25,16,4)
+    Text = ("OK")
+    Picture = Picture["icon:/16/ok"]
+  }
+}

@@ -16,23 +16,14 @@ Public Sub Form_Open()
   FMain.Center
   
   If Exist("/home/" & System.User.Name & "/Videos") = True Then
-   TextBox_SaveTo.Text = "/home/" & System.User.Name & "/Videos"
+    TextBox_SaveTo.Text = "/home/" & System.User.Name & "/Videos"
   Endif
   
 End
 
 Public Sub Button_VideoURL_Click()
   
-  If Not TextBox_VideoURL.Text = "" Then
-    If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
-      ListBox_VideoURL.Add(TextBox_VideoURL.Text)
-      TextBox_VideoURL.Clear
-    Else
-      Message.Info(MSG_Invailed_VideoURL)
-    Endif
-  Else
-    Message.Info(MSG_No_VideoURL)
-  Endif
+  Add_VideoURL
   
 End
 
@@ -43,13 +34,13 @@ Public Sub PictureBox_Clear_MouseDown()
 End
 
 Public Sub Button_Remove_Click()
-
+  
   If Not ListBox_VideoURL.Index = -1 Then
     ListBox_VideoURL.Remove(ListBox_VideoURL.Index)
   Else
     Message.Info(MSG_No_url_To_Remove)
   Endif
-
+  
 End
 
 Public Sub Button_SaveTo_Click()
@@ -73,24 +64,90 @@ Public Sub Button_OpenFolder_Click()
 End
 
 Public Sub Button_Download_Click()
-
+  
   If TextBox_SaveTo.Text = "" Then
-     Message.Info(MSG_No_SaveTo_Dir)
-Else
-  If ListBox_VideoURL.Count = 0 Then
-    Message.Info(MSG_No_VideoURLS)
+    Message.Info(MSG_No_SaveTo_Dir)
+  Else
+    If ListBox_VideoURL.Count = 0 Then
+      Message.Info(MSG_No_VideoURLS)
     Else
-    FDownloadOut.Show
-   Button_Download.Enabled = False
+      FDownloadOut.Show
+      Button_Download.Enabled = False
+    Endif
   Endif
-  Endif
-
+  
 End
-
-
 
 Public Sub Button_Close_Click()
   
   FMain.Close
   
+End
+
+Public Sub Button_Up_Click()
+  
+  Dim tmp As String
+  Dim i As Integer
+  
+  If Not ListBox_VideoURL.Count <= 1 Then
+    If ListBox_VideoURL.Index > 0 Then
+      tmp = ListBox_VideoURL.Text
+      i = ListBox_VideoURL.Index
+      ListBox_VideoURL.Remove(i)
+      ListBox_VideoURL.Add(tmp, i - 1)
+      ListBox_VideoURL.Index = i - 1
+      ListBox_VideoURL.SetFocus
+    End If
+  End If
+  
+End 
+
+Public Sub Button_Down_Click()
+  
+  Dim tmp As String
+  Dim i As Integer
+  
+  If Not ListBox_VideoURL.Count <= 1 Or ListBox_VideoURL.Index < 0 Then
+    If ListBox_VideoURL.Index < (ListBox_VideoURL.Count - 1) Then
+      tmp = ListBox_VideoURL.Text
+      i = ListBox_VideoURL.Index
+      ListBox_VideoURL.Remove(i)
+      ListBox_VideoURL.Add(tmp, i + 1)
+      ListBox_VideoURL.Index = i + 1
+      ListBox_VideoURL.SetFocus
+    End If 
+  End If 
+  
+End
+
+Public Sub TextBox_VideoURL_KeyPress()
+  
+  
+  If Key.code = Key.Return Then
+    Add_VideoURL
+  Endif
+
+End
+
+Public Sub Add_VideoURL()
+  
+  If Not TextBox_VideoURL.Text = "" Then
+    If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
+      ListBox_VideoURL.Add(TextBox_VideoURL.Text)
+      TextBox_VideoURL.Clear
+      ListBox_VideoURL.Index = ListBox_VideoURL.Count - 1
+      ListBox_VideoURL.SetFocus
+      Else
+      Message.Info(MSG_Invailed_VideoURL)
+    Endif
+  Else
+    Message.Info(MSG_No_VideoURL)
+  Endif
+  
+End
+
+Public Sub Button_About_Click()
+
+  FAbout.Show
+
 End
