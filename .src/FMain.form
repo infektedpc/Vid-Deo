@@ -2,7 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,62,35)
-  Text = ("Video-D")
+  Text = ("Vid★Deo")
   Icon = Picture["Videod128x-icon.png"]
   Resizable = False
   { Label_Video Label
@@ -36,8 +36,8 @@
     Picture = Picture["icon:/16/directory"]
   }
   { Button_OpenFolder Button
-    MoveScaled(6,30,16,4)
-    Text = ("Open Folder")
+    MoveScaled(6,30,14,4)
+    Text = ("Videos")
     Picture = Picture["icon:/16/directory"]
   }
   { !ListBox_VideoURL ListBox
@@ -45,14 +45,14 @@
     #Public = True
   }
   { !Button_Download Button
-    MoveScaled(23,30,16,4)
+    MoveScaled(22,30,18,4)
     #Public = True
     Text = ("Download")
     Picture = Picture["icon:/16/internet"]
   }
   { Button_Close Button
-    MoveScaled(40,30,16,4)
-    Text = ("Finished")
+    MoveScaled(42,30,14,4)
+    Text = ("Done")
     Picture = Picture["icon:/16/ok"]
   }
   { Button_Remove Button
@@ -71,11 +71,11 @@
     List = [("Mp4"), ("Webm")]
   }
   { Button_Up Button
-    MoveScaled(57,14,4,4)
+    MoveScaled(57,13,4,4)
     Picture = Picture["icon:/16/up"]
   }
   { Button_Down Button
-    MoveScaled(57,18,4,4)
+    MoveScaled(57,17,4,4)
     Picture = Picture["icon:/16/down"]
   }
   { Button_About Button

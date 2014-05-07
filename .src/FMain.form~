@@ -1,8 +1,8 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,61,35)
-  Text = ("Video-D")
+  MoveScaled(0,0,62,35)
+  Text = ("Vid★Deo")
   Icon = Picture["Videod128x-icon.png"]
   Resizable = False
   { Label_Video Label
@@ -10,16 +10,16 @@
     Text = ("Video URL:")
   }
   { !TextBox_VideoURL TextBox
-    MoveScaled(12,2,43,4)
+    MoveScaled(12,2,44,4)
     #Public = True
     Text = ("https://www.youtube.com/watch?v=WINhrrD5m40")
   }
   { Button_VideoURL Button
-    MoveScaled(56,2,4,4)
+    MoveScaled(57,2,4,4)
     Picture = Picture["icon:/16/ok"]
   }
   { PictureBox_Clear PictureBox
-    MoveScaled(52,3,2,2)
+    MoveScaled(53,3,2,2)
     Picture = Picture["icon:/16/clear"]
   }
   { Label1 Label
@@ -27,36 +27,36 @@
     Text = ("Save To:")
   }
   { !TextBox_SaveTo TextBox
-    MoveScaled(12,25,43,4)
+    MoveScaled(12,25,44,4)
     #Public = True
     ReadOnly = True
   }
   { Button_SaveTo Button
-    MoveScaled(56,25,4,4)
+    MoveScaled(57,25,4,4)
     Picture = Picture["icon:/16/directory"]
   }
   { Button_OpenFolder Button
-    MoveScaled(1,30,16,4)
-    Text = ("Open Folder")
+    MoveScaled(6,30,14,4)
+    Text = ("Videos")
     Picture = Picture["icon:/16/directory"]
   }
   { !ListBox_VideoURL ListBox
-    MoveScaled(12,7,43,16)
+    MoveScaled(12,7,44,16)
     #Public = True
   }
   { !Button_Download Button
-    MoveScaled(20,30,16,4)
+    MoveScaled(22,30,18,4)
     #Public = True
     Text = ("Download")
     Picture = Picture["icon:/16/internet"]
   }
   { Button_Close Button
-    MoveScaled(39,30,16,4)
-    Text = ("Finished")
+    MoveScaled(42,30,14,4)
+    Text = ("Done")
     Picture = Picture["icon:/16/ok"]
   }
   { Button_Remove Button
-    MoveScaled(56,7,4,4)
+    MoveScaled(57,7,4,4)
     Picture = Picture["icon:/16/remove"]
   }
   { PictureBox1 PictureBox
@@ -71,15 +71,19 @@
     List = [("Mp4"), ("Webm")]
   }
   { Button_Up Button
-    MoveScaled(56,15,4,4)
+    MoveScaled(57,12,4,4)
     Picture = Picture["icon:/16/up"]
   }
   { Button_Down Button
-    MoveScaled(56,19,4,4)
+    MoveScaled(57,17,4,4)
     Picture = Picture["icon:/16/down"]
   }
   { Button_About Button
-    MoveScaled(56,30,4,4)
+    MoveScaled(1,30,4,4)
     Picture = Picture["icon:/16/info"]
+  }
+  { Button_Help Button
+    MoveScaled(57,30,4,4)
+    Picture = Picture["icon:/16/help"]
   }
 }

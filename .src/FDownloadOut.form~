@@ -3,6 +3,7 @@
 { Form Form
   MoveScaled(0,0,61,34)
   Text = ("Video-D - Downloading")
+  Icon = Picture["Videod128x-icon.png"]
   Resizable = False
   { !TextArea1 TextArea
     MoveScaled(1,1,59,27)

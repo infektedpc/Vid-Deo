@@ -1,10 +1,27 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,64,31)
-  Text = ("Video-D - Help")
+  MoveScaled(0,0,58,32)
+  Text = ("Video★Deo - Help")
   Icon = Picture["Videod128x-icon.png"]
+  Resizable = False
+  Border = False
   { TextArea1 TextArea
-    MoveScaled(1,1,62,25)
+    MoveScaled(1,1,56,25)
+  }
+  { Button_OK Button
+    MoveScaled(46,27,11,4)
+    Text = ("OK")
+    Picture = Picture["icon:/16/ok"]
+  }
+  { PictureBox1 PictureBox
+    MoveScaled(1,27,4,4)
+    Picture = Picture["Videod128x-icon.png"]
+    Stretch = True
+  }
+  { Label1 Label
+    MoveScaled(6,27,10,4)
+    Font = Font["Bold"]
+    Text = ("--Vid★Deo")
   }
 }
