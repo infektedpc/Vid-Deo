@@ -9,11 +9,11 @@ Geometry=[0,24,240,240]
 
 [OpenFile]
 File[1]=".src/FMain.form"
-File[2]=".src/FMain.class:73.23"
+File[2]=".src/FMain.class:31.2"
 File[3]=".src/FDownloadOut.form"
-Active=4
 File[4]=".src/FDownloadOut.class:18.101"
 File[5]=".src/FAbout.form"
+Active=6
 File[6]=".src/FHelp.form"
 File[7]=".src/FHelp.class:14.0"
 File[8]=".src/FAbout.class:14.0"

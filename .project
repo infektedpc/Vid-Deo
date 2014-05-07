@@ -4,6 +4,7 @@ Title=Vid★Deo
 Startup=FMain
 Icon=Videod128x-icon.png
 Version=0.0.1
+VersionFile=1
 Component=gb.image
 Component=gb.qt4
 Component=gb.form
