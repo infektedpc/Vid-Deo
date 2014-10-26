@@ -1,0 +1,29 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,40)
+  Text = ("Vid★Deo - Video Player")
+  Icon = Picture["Videod128x-icon.png"]
+  { Panel1 Panel
+    MoveScaled(0,33,64,7)
+    { ToolButton_Play ToolButton
+      MoveScaled(2,2,5,4)
+      Picture = Picture["icon:/32/play"]
+    }
+    { ToolButton_Pause ToolButton
+      MoveScaled(8,2,5,4)
+      Picture = Picture["icon:/32/pause"]
+    }
+    { ToolButton_Stop ToolButton
+      MoveScaled(14,2,5,4)
+      Picture = Picture["icon:/32/stop"]
+    }
+    { ToolButton_OpenVideo ToolButton
+      MoveScaled(20,2,5,4)
+      Picture = Picture["icon:/32/open"]
+    }
+    { Slider1 Slider
+      MoveScaled(28,2,25,4)
+    }
+  }
+}

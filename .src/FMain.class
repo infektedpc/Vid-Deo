@@ -1,11 +1,16 @@
 ' Gambas class file
 
+Public YoutubeDL_sOutput As String = ""
+Public myfile As String = ""
+Public VideoURLImage As String = ""
+Public VideoURLTile As String = ""
 'Messages
 Public MSG_No_VideoURL As String = "Please enter a video url."
 Public MSG_Invailed_VideoURL As String = "Invailed video url please use http or https."
 Public MSG_No_SaveTo_Dir As String = "Please select a save to directory."
 Public MSG_No_VideoURLS As String = "Please add one or more video url's."
 Public MSG_No_url_To_Remove As String = "Please select a url to remove."
+Public MSG_URL_Already_Exist As String = "This url has already been added."
 
 Public Sub _new()
   
@@ -14,6 +19,16 @@ End
 Public Sub Form_Open()
   
   FMain.Center
+
+  WebSettings.IconDatabase.Path = File.Dir(File.Dir(Temp$()))
+  WebSettings.Fonts.FixedFont = "Monospace"
+  WebSettings[WebSettings.PluginsEnabled] = True
+  WebSettings[WebSettings.JavascriptEnabled] = True
+  WebSettings[WebSettings.JavaEnabled] = True
+  'WebSettings.Fonts.DefaultFontSize = 12
+  'WebSettings.Fonts.DefaultFixedFontSize = 12
+  
+   Spinner1.Stop()
   
   If Exist("/home/" & System.User.Name & "/Videos") = True Then
     TextBox_SaveTo.Text = "/home/" & System.User.Name & "/Videos"
@@ -35,8 +50,8 @@ End
 
 Public Sub Button_Remove_Click()
   
-  If Not ListBox_VideoURL.Index = -1 Then
-    ListBox_VideoURL.Remove(ListBox_VideoURL.Index)
+  If Not IconView_VideoURL.key = "" Then
+    IconView_VideoURL.Remove(IconView_VideoURL.key)
   Else
     Message.Info(MSG_No_url_To_Remove)
   Endif
@@ -68,7 +83,7 @@ Public Sub Button_Download_Click()
   If TextBox_SaveTo.Text = "" Then
     Message.Info(MSG_No_SaveTo_Dir)
   Else
-    If ListBox_VideoURL.Count = 0 Then
+    If IconView_VideoURL.Count = 0 Then
       Message.Info(MSG_No_VideoURLS)
     Else
       FDownloadOut.Show
@@ -78,82 +93,136 @@ Public Sub Button_Download_Click()
   
 End
 
-Public Sub Button_Close_Click()
-  
-  FMain.Close
-  
-End
-
 Public Sub Button_Up_Click()
   
-  Dim tmp As String
-  Dim i As Integer
+  'Dim tmp As String
+  'Dim i As Integer
   
-  If Not ListBox_VideoURL.Count <= 1 Then
-    If ListBox_VideoURL.Index > 0 Then
-      tmp = ListBox_VideoURL.Text
-      i = ListBox_VideoURL.Index
-      ListBox_VideoURL.Remove(i)
-      ListBox_VideoURL.Add(tmp, i - 1)
-      ListBox_VideoURL.Index = i - 1
-      ListBox_VideoURL.SetFocus
-    End If
-  End If
+  'If Not IconView_VideoURL.Count <= 1 Then
+  'If IconView_VideoURL.Index > 0 Then
+  'tmp = IconView_VideoURL.Text
+  'i = IconView_VideoURL.Index
+  'IconView_VideoURL.Remove(i)
+  'IconView_VideoURL.Add(tmp, i - 1)
+  'IconView_VideoURL.Index = i - 1
+  'IconView_VideoURL.SetFocus
+  'End If
+  'End If
   
 End 
 
 Public Sub Button_Down_Click()
   
-  Dim tmp As String
-  Dim i As Integer
+  'Dim tmp As String
+  'Dim i As Integer
   
-  If Not ListBox_VideoURL.Count <= 1 Or ListBox_VideoURL.Index < 0 Then
-    If ListBox_VideoURL.Index < (ListBox_VideoURL.Count - 1) Then
-      tmp = ListBox_VideoURL.Text
-      i = ListBox_VideoURL.Index
-      ListBox_VideoURL.Remove(i)
-      ListBox_VideoURL.Add(tmp, i + 1)
-      ListBox_VideoURL.Index = i + 1
-      ListBox_VideoURL.SetFocus
-    End If 
-  End If 
+  'If Not IconView_VideoURL.Count <= 1 Or IconView_VideoURL.Index < 0 Then
+  'If IconView_VideoURL.Index < (IconView_VideoURL.Count - 1) Then
+  'tmp = IconView_VideoURL.Text
+  'i = IconView_VideoURL.Index
+  'IconView_VideoURL.Remove(i)
+  'IconView_VideoURL.Add(tmp, i + 1)
+  'IconView_VideoURL.Index = i + 1
+  'IconView_VideoURL.SetFocus
+  'End If 
+  'End If 
   
 End
 
 Public Sub TextBox_VideoURL_KeyPress()
   
-  
   If Key.code = Key.Return Then
     Add_VideoURL
   Endif
-
+  
 End
 
 Public Sub Add_VideoURL()
   
+  Spinner1.Start()
+        
   If Not TextBox_VideoURL.Text = "" Then
     If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
-      ListBox_VideoURL.Add(TextBox_VideoURL.Text)
-      TextBox_VideoURL.Clear
-      ListBox_VideoURL.Index = ListBox_VideoURL.Count - 1
-      ListBox_VideoURL.SetFocus
+      If Not IconView_VideoURL.Exist(TextBox_VideoURL.Text) Then
+        YoutubeDL_sOutput = ""
+        Shell "youtube-dl -e " & TextBox_VideoURL.Text To YoutubeDL_sOutput
+        'Print YoutubeDL_sOutput
+        If Not YoutubeDL_sOutput = "" Then
+          VideoURLTile = YoutubeDL_sOutput
+          Shell "youtube-dl --get-thumbnail " & TextBox_VideoURL.Text To YoutubeDL_sOutput
+          httpclient1.url = YoutubeDL_sOutput
+          httpClient1.get(Null, "~/Pictures/Tempthumb.jpg")
+          VideoURLImage = YoutubeDL_sOutput
+          'image.load($myfile) 
+          'TextBox_VideoURL.Clear
+          'ListBox_VideoURL. = ListBox_VideoURL.Count - 1
+          IconView_VideoURL.SetFocus
+        Endif
       Else
+        Message(MSG_URL_Already_Exist)
+      Endif
+    Else
       Message.Info(MSG_Invailed_VideoURL)
     Endif
   Else
     Message.Info(MSG_No_VideoURL)
   Endif
   
+  Spinner1.Stop()
+  
 End
 
 Public Sub Button_About_Click()
-
+  
   FAbout.Show
+  
+End
 
+Public Sub HttpClient1_Finished()
+  
+  Dim TempImage As Picture = image.Load("~/Pictures/Tempthumb.jpg").Stretch(64, 32).Picture
+  
+  IconView_VideoURL.Add(TextBox_VideoURL.Text, VideoURLTile, TempImage)
+  TextBox_VideoURL.Clear
+  
 End
 
 Public Sub Button_Help_Click()
-
+  
   FHelp.Show
+  
+End
 
+Public Sub IconView_VideoURL_DblClick()
+  
+  If Not IconView_VideoURL.Key = "" Then
+    FWebBrowser.WebView1.Url = IconView_VideoURL.Item.Key
+  Endif
+  
+End
+
+Public Sub Button_WebBrowser_Click()
+  
+  FWebBrowser.Show
+  
+End
+
+Public Sub Button_VideoPlayer_Click()
+  
+  FVideoPlayer.Show
+  
+End
+
+Public Sub Button3_Click()
+  
+  Dim Video_URLSs As String = ""
+  Dim iCount As Integer
+  
+  IconView_VideoURL.MoveFirst
+  For iCount = 1 To IconView_VideoURL.Count
+    Video_URLSs = Video_URLSs & " " & IconView_VideoURL.Item.Key
+    IconView_VideoURL.MoveNext
+  Next
+  Print Video_URLSs;
+  
 End

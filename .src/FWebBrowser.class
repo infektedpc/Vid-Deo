@@ -1,0 +1,65 @@
+' Gambas class file
+
+Public Sub Form_Open()
+  
+  FWebBrowser.Center
+  FWebBrowser.Width = 800
+  FWebBrowser.Height = 600
+  WebView1.Url = "file:///home/tim/Downloads/frames_example_5/content.html"
+  
+End
+
+Public Sub ToolButton_Previous_Click()
+  
+  WebView1.Back()
+  
+End
+
+Public Sub ToolButton_Next_Click()
+  
+  WebView1.Forward()
+  
+End
+
+Public Sub ToolButton_Navigate_Click()
+  
+  WebView1.Url = TextBox_URL.Text
+  
+End
+
+Public Sub WebView1_Status()
+  
+End
+
+Public Sub WebView1_Load()
+  
+  TextBox_URL.Text = WebView1.Url
+  
+End
+
+Public Sub ToolButton_Refresh_Click()
+  
+  WebView1.Reload()
+  
+End
+
+Public Sub ToolButton_Home_Click()
+  
+  WebView1.Url = "file:///home/tim/Downloads/frames_example_5/content.html"
+  
+End
+
+Public Sub ToolButton_CopyURL_Click()
+  
+    FMain.TextBox_VideoURL.text = TextBox_URL.Text
+    FMain.Button_VideoURL.Value = True
+
+End
+
+Public Sub TextBox_URL_KeyPress()
+  
+  If Key.code = Key.Return Then
+    WebView1.Url = TextBox_URL.Text
+  Endif
+  
+End

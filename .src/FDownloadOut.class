@@ -11,10 +11,18 @@ End
 
 Public Sub Form_Open()
   
+  Dim iCount As Integer
+  
   FDownloadOut.Center
+  Fmain.IconView_VideoURL.MoveFirst
+  Video_URLS = ""
+  
+  For iCount = 1 To Fmain.IconView_VideoURL.Count
+    Video_URLS = Video_URLS & " " & Fmain.IconView_VideoURL.Item.Key
+    Fmain.IconView_VideoURL.MoveNext
+  Next
   
   VideoD_sOutput = ""
-  Video_URLS = FMain.ListBox_VideoURL.List.Join(" ")
   If Fmain.ComboBox1.index = 0 Then
     Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl -f mp4 " & Video_URLS & "&& echo Finished" For Read As "Process"
   Else

@@ -7,4 +7,10 @@ Vid★Deo
 gb.image
 gb.qt4
 gb.form
+gb.form.dialog
+gb.net
+gb.net.curl
+gb.media
+gb.qt4.ext
+gb.qt4.webkit
 

@@ -1,0 +1,61 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,114.2857,55)
+  Text = ("Vid★Deo - Browser")
+  Icon = Picture["Videod128x-icon.png"]
+  Arrangement = Arrange.Vertical
+  { Panel1 Panel
+    MoveScaled(0,0,114.2857,6)
+    Arrangement = Arrange.Horizontal
+    Border = Border.Etched
+    { ToolButton_Home ToolButton
+      MoveScaled(1,1,5,4)
+      Picture = Picture["icon:/32/home"]
+    }
+    { ToolButton_Previous ToolButton
+      MoveScaled(6,1,5,4)
+      Picture = Picture["icon:/32/previous"]
+    }
+    { ToolButton_Next ToolButton
+      MoveScaled(11,1,5,4)
+      Picture = Picture["icon:/32/next"]
+    }
+    { TextBox_URL TextBox
+      MoveScaled(16,1,78,4)
+      Expand = True
+    }
+    { ToolButton_Navigate ToolButton
+      MoveScaled(94,1,5,4)
+      Picture = Picture["icon:/32/internet"]
+    }
+    { ToolButton_Refresh ToolButton
+      MoveScaled(99,1,5,4)
+      Text = ("ToolButton1")
+      Picture = Picture["icon:/32/refresh"]
+    }
+    { ToolButton_CopyURL ToolButton
+      MoveScaled(104,1,5,4)
+      Text = ("ToolButton1")
+      Picture = Picture["Videod128x-icon.png"]
+    }
+  }
+  { Panel3 Panel
+    MoveScaled(0,7,114.2857,44)
+    Expand = True
+    Arrangement = Arrange.Fill
+    { WebView1 WebView
+      MoveScaled(0,1,114,42)
+      Expand = True
+    }
+  }
+  { Panel2 Panel
+    MoveScaled(0,51,114.2857,4)
+    Arrangement = Arrange.Horizontal
+    Border = Border.Sunken
+    { Label1 Label
+      MoveScaled(1,0,24,3)
+      Text = ("Status:")
+    }
+  }
+}
