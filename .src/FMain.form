@@ -105,7 +105,4 @@
     MoveScaled(0,31,12,4)
     Text = ("Button3")
   }
-  { Spinner1 Spinner
-    MoveScaled(2,21,8,8)
-  }
 }

@@ -28,8 +28,6 @@ Public Sub Form_Open()
   'WebSettings.Fonts.DefaultFontSize = 12
   'WebSettings.Fonts.DefaultFixedFontSize = 12
   
-   Spinner1.Stop()
-  
   If Exist("/home/" & System.User.Name & "/Videos") = True Then
     TextBox_SaveTo.Text = "/home/" & System.User.Name & "/Videos"
   Endif
@@ -138,9 +136,6 @@ Public Sub TextBox_VideoURL_KeyPress()
 End
 
 Public Sub Add_VideoURL()
-  
-  Spinner1.Start()
-        
   If Not TextBox_VideoURL.Text = "" Then
     If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
       If Not IconView_VideoURL.Exist(TextBox_VideoURL.Text) Then
@@ -167,9 +162,6 @@ Public Sub Add_VideoURL()
   Else
     Message.Info(MSG_No_VideoURL)
   Endif
-  
-  Spinner1.Stop()
-  
 End
 
 Public Sub Button_About_Click()

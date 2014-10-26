@@ -107,6 +107,5 @@
   }
   { Spinner1 Spinner
     MoveScaled(2,21,8,8)
-    Visible = False
   }
 }
