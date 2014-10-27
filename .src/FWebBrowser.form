@@ -1,7 +1,7 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,106,77)
+  MoveScaled(0,0,106,87)
   Text = ("Vid★Deo - Browser")
   Icon = Picture["Videod128x-icon.png"]
   Arrangement = Arrange.Vertical
@@ -51,9 +51,10 @@
     MoveScaled(0,74,106,3)
     Arrangement = Arrange.Horizontal
     Border = Border.Sunken
-    { Label1 Label
-      MoveScaled(1,0,24,3)
-      Text = ("Status:")
-    }
+  }
+  { !WebStatus Label
+    MoveScaled(0,74,24,3)
+    #Public = True
+    Text = ("Label1")
   }
 }

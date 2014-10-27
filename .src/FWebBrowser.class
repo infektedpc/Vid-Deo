@@ -7,8 +7,8 @@ Public Sub Form_Open()
   FWebBrowser.Height = 600
   WebView1.UserAgent = "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"
   WebSettings[WebSettings.PluginsEnabled] = True
-  WebView1.Url = "http://youtube.com"
-  
+  WebView1.Url = "Html1.html"
+
 End
 
 Public Sub ToolButton_Previous_Click()
@@ -29,9 +29,7 @@ Public Sub ToolButton_Navigate_Click()
   
 End
 
-Public Sub WebView1_Status()
-  
-End
+
 
 Public Sub WebView1_Load()
   
@@ -47,7 +45,7 @@ End
 
 Public Sub ToolButton_Home_Click()
   
-  WebView1.Url = "file:///home/tim/Downloads/frames_example_5/content.html"
+  WebView1.Url = "http://m.youtube.com"
   
 End
 
@@ -65,3 +63,5 @@ Public Sub TextBox_URL_KeyPress()
   Endif
   
 End
+
+
