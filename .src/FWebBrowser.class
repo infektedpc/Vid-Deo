@@ -5,7 +5,7 @@ Public Sub Form_Open()
   FWebBrowser.Center
   FWebBrowser.Width = 800
   FWebBrowser.Height = 600
-  WebView1.UserAgent = "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"
+'  WebView1.UserAgent = "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"
   WebSettings[WebSettings.PluginsEnabled] = True
   WebView1.Url = "Html1.html"
 
@@ -28,8 +28,6 @@ Public Sub ToolButton_Navigate_Click()
   WebView1.Url = TextBox_URL.Text
   
 End
-
-
 
 Public Sub WebView1_Load()
   

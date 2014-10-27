@@ -28,6 +28,8 @@ Public Sub Form_Open()
   'WebSettings.Fonts.DefaultFontSize = 12
   'WebSettings.Fonts.DefaultFixedFontSize = 12
   
+  Spinner1.Stop
+  
   If Exist("/home/" & System.User.Name & "/Videos") = True Then
     TextBox_SaveTo.Text = "/home/" & System.User.Name & "/Videos"
   Endif
@@ -36,7 +38,7 @@ End
 
 Public Sub Button_VideoURL_Click()
   
-  Add_VideoURL
+Module1.Add_VideoURL()
   
 End
 
@@ -130,38 +132,9 @@ End
 Public Sub TextBox_VideoURL_KeyPress()
   
   If Key.code = Key.Return Then
-    Add_VideoURL
+    Module1.Add_VideoURL
   Endif
   
-End
-
-Public Sub Add_VideoURL()
-  If Not TextBox_VideoURL.Text = "" Then
-    If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
-      If Not IconView_VideoURL.Exist(TextBox_VideoURL.Text) Then
-        YoutubeDL_sOutput = ""
-        Shell "youtube-dl -e " & TextBox_VideoURL.Text To YoutubeDL_sOutput
-        'Print YoutubeDL_sOutput
-        If Not YoutubeDL_sOutput = "" Then
-          VideoURLTile = YoutubeDL_sOutput
-          Shell "youtube-dl --get-thumbnail " & TextBox_VideoURL.Text To YoutubeDL_sOutput
-          httpclient1.url = YoutubeDL_sOutput
-          httpClient1.get(Null, "~/Pictures/Tempthumb.jpg")
-          VideoURLImage = YoutubeDL_sOutput
-          'image.load($myfile) 
-          'TextBox_VideoURL.Clear
-          'ListBox_VideoURL. = ListBox_VideoURL.Count - 1
-          IconView_VideoURL.SetFocus
-        Endif
-      Else
-        Message(MSG_URL_Already_Exist)
-      Endif
-    Else
-      Message.Info(MSG_Invailed_VideoURL)
-    Endif
-  Else
-    Message.Info(MSG_No_VideoURL)
-  Endif
 End
 
 Public Sub Button_About_Click()
@@ -217,4 +190,13 @@ Public Sub Button3_Click()
   Next
   Print Video_URLSs;
   
+End
+
+Public Sub Button1_Click()
+
+ 'Spinner1.Start
+ 'Spinner1.Visible = True
+ 'Spinner1.Value = 0
+ 'Spinner1.Show
+ 
 End

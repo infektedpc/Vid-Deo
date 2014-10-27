@@ -87,8 +87,9 @@
     MoveScaled(13,6,54,37)
     #Public = True
   }
-  { HttpClient1 #HttpClient
+  { !HttpClient1 #HttpClient
     #MoveScaled(5,36)
+    #Public = True
   }
   { Button_WebBrowser Button
     MoveScaled(36,49,18,4)
@@ -101,7 +102,20 @@
     Picture = Picture["icon:/16/play"]
   }
   { Button3 Button
-    MoveScaled(0,31,12,4)
+    MoveScaled(0,40,12,4)
     Text = ("Button3")
+  }
+  { !Spinner1 Spinner
+    MoveScaled(1,20,11,4)
+    #Public = True
+  }
+  { Button1 Button
+    MoveScaled(2,31,9,4)
+    Text = ("Button1")
+  }
+  { !Label2 Label
+    MoveScaled(1,27,11,4)
+    #Public = True
+    Text = ("Label2")
   }
 }

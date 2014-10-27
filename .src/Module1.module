@@ -1,0 +1,46 @@
+' Gambas module file
+
+  Public Sub Add_VideoURL()
+ 
+  FMain.Spinner1.Start
+ 
+  If Not FMain.TextBox_VideoURL.Text = "" Then
+    If InStr(FMain.TextBox_VideoURL.Text, "http://") = 1 Or InStr(FMain.TextBox_VideoURL.Text, "https://") = 1 Then
+      If Not FMain.IconView_VideoURL.Exist(FMain.TextBox_VideoURL.Text) Then
+        FMain.YoutubeDL_sOutput = ""
+    
+        Print "1"
+        FMain.Label2.Text = "1"
+        
+        Shell "youtube-dl -e " & FMain.TextBox_VideoURL.Text To FMain.YoutubeDL_sOutput
+        If Not FMain.YoutubeDL_sOutput = "" Then
+          FMain.VideoURLTile = FMain.YoutubeDL_sOutput
+         
+          Print "2"
+          FMain.Label2.Text = "2"
+          
+          Shell "youtube-dl --get-thumbnail " & FMain.TextBox_VideoURL.Text To FMain.YoutubeDL_sOutput
+         
+          Print "3"
+          FMain.Label2.Text = "3"
+          
+          FMain.httpclient1.url = FMain.YoutubeDL_sOutput
+          FMain.httpClient1.get(Null, "~/Pictures/Tempthumb.jpg")
+          FMain.VideoURLImage = FMain.YoutubeDL_sOutput
+          'image.load($myfile) 
+          'TextBox_VideoURL.Clear
+          'ListBox_VideoURL. = ListBox_VideoURL.Count - 1
+          FMain.IconView_VideoURL.SetFocus
+        Endif
+      Else
+        Message(FMain.MSG_URL_Already_Exist)
+      Endif
+    Else
+      Message.Info(FMain.MSG_Invailed_VideoURL)
+    Endif
+  Else
+    Message.Info(FMain.MSG_No_VideoURL)
+  Endif
+  
+   FMain.Spinner1.Stop
+End
