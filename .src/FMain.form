@@ -81,7 +81,6 @@
   }
   { Button_Help Button
     MoveScaled(68,29,4,4)
-    Visible = False
     Picture = Picture["icon:/16/help"]
   }
   { !IconView_VideoURL IconView

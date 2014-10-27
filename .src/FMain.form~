@@ -81,7 +81,6 @@
   }
   { Button_Help Button
     MoveScaled(68,29,4,4)
-    Visible = False
     Picture = Picture["icon:/16/help"]
   }
   { !IconView_VideoURL IconView
@@ -104,8 +103,5 @@
   { Button3 Button
     MoveScaled(0,31,12,4)
     Text = ("Button3")
-  }
-  { Spinner1 Spinner
-    MoveScaled(2,21,8,8)
   }
 }
