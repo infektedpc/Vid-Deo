@@ -1,56 +1,54 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,114,77)
+  MoveScaled(0,0,106,77)
   Text = ("Vid★Deo - Browser")
   Icon = Picture["Videod128x-icon.png"]
   Arrangement = Arrange.Vertical
   { Panel1 Panel
-    MoveScaled(0,0,114.25,6)
+    MoveScaled(0,0,114,4)
     Arrangement = Arrange.Horizontal
     Border = Border.Etched
     { ToolButton_Home ToolButton
-      MoveScaled(1,1,5,4)
-      Picture = Picture["icon:/32/home"]
+      MoveScaled(0,0,5,4)
+      Picture = Picture["icon:/22/home"]
     }
     { ToolButton_Previous ToolButton
-      MoveScaled(6,1,5,4)
-      Picture = Picture["icon:/32/previous"]
+      MoveScaled(5,0,4,4)
+      Picture = Picture["icon:/22/previous"]
     }
     { ToolButton_Next ToolButton
-      MoveScaled(11,1,5,4)
-      Picture = Picture["icon:/32/next"]
+      MoveScaled(9,0,4,4)
+      Picture = Picture["icon:/22/right"]
+    }
+    { ToolButton_Refresh ToolButton
+      MoveScaled(13,0,4,4)
+      Picture = Picture["icon:/22/refresh"]
     }
     { TextBox_URL TextBox
-      MoveScaled(16,1,78,4)
+      MoveScaled(17,0,81,4)
       Expand = True
     }
     { ToolButton_Navigate ToolButton
-      MoveScaled(94,1,5,4)
-      Picture = Picture["icon:/32/internet"]
-    }
-    { ToolButton_Refresh ToolButton
-      MoveScaled(99,1,5,4)
-      Text = ("ToolButton1")
-      Picture = Picture["icon:/32/refresh"]
+      MoveScaled(98,0,4,4)
+      Picture = Picture["icon:/22/internet"]
     }
     { ToolButton_CopyURL ToolButton
-      MoveScaled(104,1,5,4)
-      Text = ("ToolButton1")
-      Picture = Picture["Videod128x-icon.png"]
+      MoveScaled(102,0,4,4)
+      Picture = Picture["icon:/22/add"]
     }
   }
   { Panel3 Panel
-    MoveScaled(0,7,114,67)
+    MoveScaled(0,4,106,70)
     Expand = True
     Arrangement = Arrange.Fill
     { WebView1 WebView
-      MoveScaled(0,1,114,66)
+      MoveScaled(0,1,106,65)
       Expand = True
     }
   }
   { Panel2 Panel
-    MoveScaled(0,74,114,3)
+    MoveScaled(0,74,106,3)
     Arrangement = Arrange.Horizontal
     Border = Border.Sunken
     { Label1 Label
