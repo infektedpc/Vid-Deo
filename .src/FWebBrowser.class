@@ -29,12 +29,6 @@ Public Sub ToolButton_Navigate_Click()
   
 End
 
-Public Sub WebView1_Load()
-  
-  TextBox_URL.Text = WebView1.Url
-  
-End
-
 Public Sub ToolButton_Refresh_Click()
   
   WebView1.Reload()
@@ -54,6 +48,12 @@ Public Sub ToolButton_CopyURL_Click()
 
 End
 
+
+Public Sub WebView1_Status()
+
+    WebStatus.Text = WebView1.Status
+
+End
 Public Sub TextBox_URL_KeyPress()
   
   If Key.code = Key.Return Then
@@ -62,4 +62,14 @@ Public Sub TextBox_URL_KeyPress()
   
 End
 
+Public Sub WebView1_Link(Url As String)
 
+   WebStatus.Text = Url
+
+End
+
+Public Sub WebView1_Progress()
+
+   TextBox_URL.Text = WebView1.Url
+
+End

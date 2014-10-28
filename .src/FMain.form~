@@ -106,11 +106,16 @@
     Text = ("Button3")
   }
   { !Spinner1 Spinner
-    MoveScaled(1,21,11,10)
+    MoveScaled(1,20,11,4)
     #Public = True
   }
   { Button1 Button
     MoveScaled(2,31,9,4)
     Text = ("Button1")
+  }
+  { !Label2 Label
+    MoveScaled(1,27,11,4)
+    #Public = True
+    Text = ("Label2")
   }
 }

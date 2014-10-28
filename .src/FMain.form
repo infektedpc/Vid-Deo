@@ -17,7 +17,7 @@
   { !Button_VideoURL Button
     MoveScaled(68,1,4,4)
     #Public = True
-    Picture = Picture["icon:/16/ok"]
+    Picture = Picture["icon:/16/paste"]
   }
   { PictureBox_Clear PictureBox
     MoveScaled(63,1,4,4)

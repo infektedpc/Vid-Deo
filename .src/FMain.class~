@@ -37,8 +37,13 @@ Public Sub Form_Open()
 End
 
 Public Sub Button_VideoURL_Click()
-  
-Class1.Add_VideoURL()
+   Dim bla As String
+If Clipboard.Text = 1 Then
+
+ Clipboard.Paste
+TextBox_VideoURL.Text = bla
+  Module1.Add_VideoURL()
+Endif
   
 End
 
