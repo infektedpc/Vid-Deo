@@ -1,10 +1,14 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,73,54)
+  MoveScaled(0,0,73,53)
   Text = ("Vid★Deo")
   Icon = Picture["Videod128x-icon.png"]
   Resizable = False
+  { TrayMenu1 Menu
+    Text = ("Vid★Deo")
+    Visible = False
+  }
   { Label_Video Label
     MoveScaled(2,1,11,4)
     Text = ("Video URL:")
@@ -17,7 +21,8 @@
   { !Button_VideoURL Button
     MoveScaled(68,1,4,4)
     #Public = True
-    Picture = Picture["icon:/16/ok"]
+    ToolTip = ("Add URL from clipboard")
+    Picture = Picture["icon:/16/paste"]
   }
   { PictureBox_Clear PictureBox
     MoveScaled(63,1,4,4)
@@ -25,31 +30,32 @@
     Alignment = Align.Center
   }
   { Label1 Label
-    MoveScaled(5,44,8,4)
+    MoveScaled(5,40,8,4)
     Text = ("Save To:")
   }
   { !TextBox_SaveTo TextBox
-    MoveScaled(13,44,54,4)
+    MoveScaled(13,40,54,4)
     #Public = True
     ReadOnly = True
   }
   { Button_SaveTo Button
-    MoveScaled(68,44,4,4)
+    MoveScaled(68,40,4,4)
     Picture = Picture["icon:/16/directory"]
   }
   { Button_OpenFolder Button
-    MoveScaled(1,49,15,4)
+    MoveScaled(13,45,17,4)
     Text = ("Videos")
     Picture = Picture["icon:/16/directory"]
   }
   { !Button_Download Button
-    MoveScaled(55,49,17,4)
+    MoveScaled(50,45,17,4)
     #Public = True
     Text = ("Download")
     Picture = Picture["icon:/16/save"]
   }
   { Button_Remove Button
     MoveScaled(68,6,4,4)
+    ToolTip = ("Remove selected item from list")
     Picture = Picture["icon:/16/remove"]
   }
   { PictureBox1 PictureBox
@@ -64,58 +70,51 @@
     List = [("Mp4"), ("Webm")]
   }
   { Button_Up Button
-    MoveScaled(68,19,4,4)
+    MoveScaled(68,20,4,4)
     Visible = False
     Enabled = False
     Picture = Picture["icon:/16/up"]
   }
   { Button_Down Button
-    MoveScaled(68,24,4,4)
+    MoveScaled(68,25,4,4)
     Visible = False
     Enabled = False
     Picture = Picture["icon:/16/down"]
   }
   { Button_About Button
-    MoveScaled(68,39,4,4)
+    MoveScaled(68,35,4,4)
+    ToolTip = ("About Vid★Deo")
     Picture = Picture["icon:/16/info"]
   }
-  { Button_Help Button
-    MoveScaled(68,29,4,4)
-    Picture = Picture["icon:/16/help"]
-  }
   { !IconView_VideoURL IconView
-    MoveScaled(13,6,54,37)
+    MoveScaled(13,6,54,33)
     #Public = True
   }
   { !HttpClient1 #HttpClient
-    #MoveScaled(5,36)
+    #MoveScaled(5,32)
     #Public = True
   }
   { Button_WebBrowser Button
-    MoveScaled(36,49,18,4)
+    MoveScaled(31,45,18,4)
     Text = ("WebBrowser")
     Picture = Picture["icon:/16/internet"]
   }
-  { Button_VideoPlayer Button
-    MoveScaled(17,49,18,4)
-    Text = ("VideoPlayer")
-    Picture = Picture["icon:/16/play"]
-  }
   { Button3 Button
-    MoveScaled(0,40,12,4)
+    MoveScaled(0,28,12,4)
+    Visible = False
     Text = ("Button3")
   }
   { !Spinner1 Spinner
-    MoveScaled(1,20,11,4)
+    MoveScaled(1,20,11,8)
     #Public = True
   }
-  { Button1 Button
-    MoveScaled(2,31,9,4)
-    Text = ("Button1")
+  { Button_ClearList Button
+    MoveScaled(68,11,4,4)
+    Picture = Picture["icon:/16/trash"]
   }
-  { !Label2 Label
-    MoveScaled(1,27,11,4)
-    #Public = True
-    Text = ("Label2")
+  { TrayIcon1 #TrayIcon
+    #MoveScaled(5,43)
+    Visible = True
+    Picture = Picture["Videod128x-icon.png"]
   }
 }

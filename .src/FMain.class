@@ -5,12 +5,15 @@ Public myfile As String = ""
 Public VideoURLImage As String = ""
 Public VideoURLTile As String = ""
 'Messages
-Public MSG_No_VideoURL As String = "Please enter a video url."
-Public MSG_Invailed_VideoURL As String = "Invailed video url please use http or https."
-Public MSG_No_SaveTo_Dir As String = "Please select a save to directory."
-Public MSG_No_VideoURLS As String = "Please add one or more video url's."
-Public MSG_No_url_To_Remove As String = "Please select a url to remove."
-Public MSG_URL_Already_Exist As String = "This url has already been added."
+Public MSG_No_VideoURL As String = ("Please enter a video url.")
+Public MSG_Invailed_VideoURL As String = ("Invailed video url please use http or https.")
+Public MSG_No_SaveTo_Dir As String = ("Please select a save to directory.")
+Public MSG_No_VideoURLS As String = ("Please add one or more video url's.")
+Public MSG_No_url_To_Remove As String = ("Please select a url to remove.")
+Public MSG_URL_Already_Exist As String = ("This url has already been added.")
+Public MSG_ClearList As String = ("Clear url list,Are you sure?.")
+MSG_ClearList_No As String = ("No")
+MSG_ClearList_Yes As String = ("Yes")
 
 Public Sub _new()
   
@@ -155,12 +158,6 @@ Public Sub HttpClient1_Finished()
   
 End
 
-Public Sub Button_Help_Click()
-  
-  FHelp.Show
-  
-End
-
 Public Sub IconView_VideoURL_DblClick()
   
   If Not IconView_VideoURL.Key = "" Then
@@ -169,16 +166,16 @@ Public Sub IconView_VideoURL_DblClick()
   
 End
 
-Public Sub Button_WebBrowser_Click()
-  
+Public Sub Button_WebBrowser_Click()  
   FWebBrowser.Show
   
 End
 
-Public Sub Button_VideoPlayer_Click()
-  
-  FVideoPlayer.Show
-  
+
+Public Sub TrayIcon1_Menu()
+
+  TrayMenu1.Popup()
+
 End
 
 Public Sub Button3_Click()
@@ -195,11 +192,16 @@ Public Sub Button3_Click()
   
 End
 
-Public Sub Button1_Click()
+Public Sub Button_ClearList_Click()
+  
+  If Message.Question(MSG_ClearList, MSG_ClearList_Yes, MSG_ClearList_No) = 1 Then
+    IconView_VideoURL.Clear
+  Endif
 
- 'Spinner1.Start
- 'Spinner1.Visible = True
- 'Spinner1.Value = 0
- 'Spinner1.Show
- 
+End
+
+Public Sub Form_Close()
+
+    TrayIcon1.Delete
+
 End

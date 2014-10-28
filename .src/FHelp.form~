@@ -7,6 +7,7 @@
   Resizable = False
   { TextArea1 TextArea
     MoveScaled(1,1,56,25)
+    ReadOnly = True
     Wrap = True
   }
   { Button_OK Button

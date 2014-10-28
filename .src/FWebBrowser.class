@@ -44,7 +44,7 @@ End
 Public Sub ToolButton_CopyURL_Click()
   
     FMain.TextBox_VideoURL.text = TextBox_URL.Text
-    FMain.Button_VideoURL.Value = True
+    Module1.Add_VideoURL()
 
 End
 
