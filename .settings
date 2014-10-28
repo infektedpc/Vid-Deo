@@ -1,3 +1,6 @@
+[Bookmarks]
+FMain=[]
+
 [Breakpoints]
 Count=0
 
@@ -5,7 +8,11 @@ Count=0
 Count=0
 
 [OpenFile]
-Count=0
+Active=1
+File[1]=".src/FMain.form"
+File[2]=".src/FMain.class:23.2"
+File[3]=".src/Module1.module:20.13"
+Count=3
 
 [Watches]
 Count=0

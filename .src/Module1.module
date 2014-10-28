@@ -2,8 +2,6 @@
 
   Public Sub Add_VideoURL()
  
-  FMain.Spinner1.Start
- 
   If Not FMain.TextBox_VideoURL.Text = "" Then
     If InStr(FMain.TextBox_VideoURL.Text, "http://") = 1 Or InStr(FMain.TextBox_VideoURL.Text, "https://") = 1 Then
       If Not FMain.IconView_VideoURL.Exist(FMain.TextBox_VideoURL.Text) Then
@@ -17,9 +15,6 @@
           'FMain.httpClient1.get(Null, "~/Pictures/Tempthumb.jpg")
           'FMain.VideoURLImage = FMain.YoutubeDL_sOutput
           
-          'image.load($myfile) 
-          'TextBox_VideoURL.Clear
-          'ListBox_VideoURL. = ListBox_VideoURL.Count - 1
          FMain.IconView_VideoURL.Add(FMain.TextBox_VideoURL.Text, FMain.VideoURLTile)
          FMain.IconView_VideoURL.SetFocus
          FMain.TextBox_VideoURL.Clear
@@ -35,5 +30,4 @@
     Message.Info(FMain.MSG_No_VideoURL)
   Endif
   
-   FMain.Spinner1.Stop
 End

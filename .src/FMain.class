@@ -12,8 +12,8 @@ Public MSG_No_VideoURLS As String = ("Please add one or more video url's.")
 Public MSG_No_url_To_Remove As String = ("Please select a url to remove.")
 Public MSG_URL_Already_Exist As String = ("This url has already been added.")
 Public MSG_ClearList As String = ("Clear url list,Are you sure?.")
-MSG_ClearList_No As String = ("No")
-MSG_ClearList_Yes As String = ("Yes")
+Public MSG_ClearList_No As String = ("No")
+Public MSG_ClearList_Yes As String = ("Yes")
 
 Public Sub _new()
   
@@ -31,12 +31,12 @@ Public Sub Form_Open()
   'WebSettings.Fonts.DefaultFontSize = 12
   'WebSettings.Fonts.DefaultFixedFontSize = 12
   
-  Spinner1.Stop
-  
   If Exist("/home/" & System.User.Name & "/Videos") = True Then
     TextBox_SaveTo.Text = "/home/" & System.User.Name & "/Videos"
   Endif
   
+   Shell "youtube-dl --version" To YoutubeDL_sOutput
+    Label_YouTubeDL_Version.text = "Youtube-dl Version: " & YoutubeDL_sOutput
 End
 
 Public Sub Button_VideoURL_Click()
@@ -99,42 +99,6 @@ Public Sub Button_Download_Click()
   
 End
 
-Public Sub Button_Up_Click()
-  
-  'Dim tmp As String
-  'Dim i As Integer
-  
-  'If Not IconView_VideoURL.Count <= 1 Then
-  'If IconView_VideoURL.Index > 0 Then
-  'tmp = IconView_VideoURL.Text
-  'i = IconView_VideoURL.Index
-  'IconView_VideoURL.Remove(i)
-  'IconView_VideoURL.Add(tmp, i - 1)
-  'IconView_VideoURL.Index = i - 1
-  'IconView_VideoURL.SetFocus
-  'End If
-  'End If
-  
-End 
-
-Public Sub Button_Down_Click()
-  
-  'Dim tmp As String
-  'Dim i As Integer
-  
-  'If Not IconView_VideoURL.Count <= 1 Or IconView_VideoURL.Index < 0 Then
-  'If IconView_VideoURL.Index < (IconView_VideoURL.Count - 1) Then
-  'tmp = IconView_VideoURL.Text
-  'i = IconView_VideoURL.Index
-  'IconView_VideoURL.Remove(i)
-  'IconView_VideoURL.Add(tmp, i + 1)
-  'IconView_VideoURL.Index = i + 1
-  'IconView_VideoURL.SetFocus
-  'End If 
-  'End If 
-  
-End
-
 Public Sub TextBox_VideoURL_KeyPress()
   
   If Key.code = Key.Return Then
@@ -149,14 +113,11 @@ Public Sub Button_About_Click()
   
 End
 
-Public Sub HttpClient1_Finished()
-  
-  Dim TempImage As Picture = image.Load("~/Pictures/Tempthumb.jpg").Stretch(64, 32).Picture
-  
-  IconView_VideoURL.Add(TextBox_VideoURL.Text, VideoURLTile, TempImage)
-  TextBox_VideoURL.Clear
-  
-End
+'Public Sub HttpClient1_Finished()
+  'Dim TempImage As Picture = image.Load("~/Pictures/Tempthumb.jpg").Stretch(64, 32).Picture
+  'IconView_VideoURL.Add(TextBox_VideoURL.Text, VideoURLTile, TempImage)
+  'TextBox_VideoURL.Clear
+'End
 
 Public Sub IconView_VideoURL_DblClick()
   
@@ -167,6 +128,7 @@ Public Sub IconView_VideoURL_DblClick()
 End
 
 Public Sub Button_WebBrowser_Click()  
+
   FWebBrowser.Show
   
 End
@@ -203,5 +165,27 @@ End
 Public Sub Form_Close()
 
     TrayIcon1.Delete
+
+End
+
+Public Sub TrayMenu1_WebBrowser_Click()
+
+   FWebBrowser.Show
+
+End
+
+Public Sub TrayMenu1_Videos_Click()
+
+  If Not TextBox_SaveTo.Text = "" Then
+    Shell "xdg-open " & TextBox_SaveTo.Text
+  Else
+    Message.Info(MSG_No_SaveTo_Dir)
+  Endif
+
+End
+
+Public Sub TrayMenu1_Quit_Click()
+
+  Me.Close
 
 End

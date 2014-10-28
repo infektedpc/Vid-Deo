@@ -8,6 +8,18 @@
   { TrayMenu1 Menu
     Text = ("Vid★Deo")
     Visible = False
+    { TrayMenu1_WebBrowser Menu
+      Text = ("WebBrowser")
+      Picture = Picture["icon:/16/internet"]
+    }
+    { TrayMenu1_Videos Menu
+      Text = ("Videos")
+      Picture = Picture["icon:/16/directory"]
+    }
+    { TrayMenu1_Quit Menu
+      Text = ("Quit")
+      Picture = Picture["icon:/16/quit"]
+    }
   }
   { Label_Video Label
     MoveScaled(2,1,11,4)
@@ -69,18 +81,6 @@
     ReadOnly = True
     List = [("Mp4"), ("Webm")]
   }
-  { Button_Up Button
-    MoveScaled(68,20,4,4)
-    Visible = False
-    Enabled = False
-    Picture = Picture["icon:/16/up"]
-  }
-  { Button_Down Button
-    MoveScaled(68,25,4,4)
-    Visible = False
-    Enabled = False
-    Picture = Picture["icon:/16/down"]
-  }
   { Button_About Button
     MoveScaled(68,35,4,4)
     ToolTip = ("About Vid★Deo")
@@ -101,20 +101,19 @@
   }
   { Button3 Button
     MoveScaled(0,28,12,4)
-    Visible = False
     Text = ("Button3")
-  }
-  { !Spinner1 Spinner
-    MoveScaled(1,20,11,8)
-    #Public = True
   }
   { Button_ClearList Button
     MoveScaled(68,11,4,4)
     Picture = Picture["icon:/16/trash"]
   }
   { TrayIcon1 #TrayIcon
-    #MoveScaled(5,43)
+    #MoveScaled(5,20)
     Visible = True
     Picture = Picture["Videod128x-icon.png"]
+  }
+  { Label_YouTubeDL_Version Label
+    MoveScaled(1,50,31,3)
+    Text = ("Youtube-dl Version: ")
   }
 }
