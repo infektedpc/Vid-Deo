@@ -141,10 +141,11 @@
     Visible = False
     Background = Color.Background
     Arrangement = Arrange.Column
-    { Button_Cancel Button
+    { !Button_Cancel Button
       MoveScaled(1,0,16,4)
-      Text = ("Cancel")
-      Picture = Picture["icon:/16/cancel"]
+      #Public = True
+      Text = ("Done")
+      Picture = Picture["icon:/16/ok"]
     }
   }
 }

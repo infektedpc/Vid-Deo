@@ -144,7 +144,6 @@ End
 Public Sub ListView_VideoURL_DblClick()
   
   If Not ListView_VideoURL.Key = "" Then
-    Message.Info(ListView_VideoURL.Key)
     URLKryFromItem = ListView_VideoURL.Key
     URLKryFromItem_Boolean = True
     FWebBrowser.Show
@@ -221,16 +220,15 @@ Public Sub TextArea1_Change()
   
 End
 Public Sub Button_Cancel_Click()
-  If Button_Cancel.Text = "Done" Then
+  If Not Button_Cancel.Text = "Cancel" Then
   If isRunning("youtube-dl") = True Then
     If Message.Question("There are videos currently downloading.\n Do you want to cancel the download?", "Yes", "No") = 1 Then
       Shell "killall -SIGTERM youtube-dl"
     Endif
   Endif
+  Else
      Panel1.Visible = False
      Panel2.Visible = False
-     Button_Cancel.Text = "Cancel"
-     Button_Cancel.Picture = Picture["icon:/16/cancel"]
   Endif
 End
 

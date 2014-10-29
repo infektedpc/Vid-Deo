@@ -48,9 +48,11 @@ Public Sub ToolButton_Home_Click()
 End
 
 Public Sub ToolButton_CopyURL_Click()
-  
+
+  If Not FMain.Button_Cancel.text = "Cancel" Then
     FMain.TextBox_VideoURL.text = TextBox_URL.Text
     FMain.Add_VideoURL()
+Endif
 
 End
 
