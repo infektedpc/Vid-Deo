@@ -44,7 +44,7 @@ End
 Public Sub ToolButton_CopyURL_Click()
   
     FMain.TextBox_VideoURL.text = TextBox_URL.Text
-    Module1.Add_VideoURL()
+    FMain.Add_VideoURL()
 
 End
 
@@ -56,7 +56,7 @@ Public Sub WebView1_Status()
 End
 Public Sub TextBox_URL_KeyPress()
   
-  If Key.code = Key.Return Then
+  If Key.code = Key.Return Or Key.code = Key.Enter Then
     WebView1.Url = TextBox_URL.Text
   Endif
   

@@ -17,7 +17,7 @@
   }
   { Panel1 Panel
     MoveScaled(0,28,61,6)
-    Arrangement = Arrange.Horizontal
+    Arrangement = Arrange.Column
     { Button_Cancel Button
       MoveScaled(30,1,16,4)
       Text = ("Cancel")

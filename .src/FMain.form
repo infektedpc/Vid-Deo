@@ -87,8 +87,10 @@
     Picture = Picture["icon:/16/info"]
   }
   { !IconView_VideoURL IconView
-    MoveScaled(13,6,54,33)
+    MoveScaled(68,48,4,4)
     #Public = True
+    Visible = False
+    Enabled = False
   }
   { !HttpClient1 #HttpClient
     #MoveScaled(5,32)
@@ -117,5 +119,32 @@
   { Label_YouTubeDL_Version Label
     MoveScaled(1,50,31,3)
     Text = ("Youtube-dl Version: ")
+  }
+  { !ListView_VideoURL ListView
+    MoveScaled(13,6,54,33)
+    #Public = True
+  }
+  { Panel2 Panel
+    MoveScaled(0,0,73,49)
+    Visible = False
+    Background = Color.Background
+    Expand = True
+    Arrangement = Arrange.Fill
+    { !TextArea1 TextArea
+      MoveScaled(1,1,71,47)
+      #Public = True
+      ReadOnly = True
+    }
+  }
+  { Panel1 Panel
+    MoveScaled(0,49,74,4)
+    Visible = False
+    Background = Color.Background
+    Arrangement = Arrange.Column
+    { Button_Cancel Button
+      MoveScaled(1,0,16,4)
+      Text = ("Cancel")
+      Picture = Picture["icon:/16/cancel"]
+    }
   }
 }
