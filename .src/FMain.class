@@ -4,9 +4,11 @@ Public YoutubeDL_sOutput As String = ""
 Public myfile As String = ""
 Public VideoURLImage As String = ""
 Public VideoURLTile As String = ""
-
 Public VideoD_sOutput As String = ""
 Public Video_URLS As String = ""
+
+Public URLKryFromItem As String = ""
+Public URLKryFromItem_Boolean As Boolean
 'Messages
 Public MSG_No_VideoURL As String = ("Please enter a video url.")
 Public MSG_Invailed_VideoURL As String = ("Invailed video url please use http or https.")
@@ -14,13 +16,9 @@ Public MSG_No_SaveTo_Dir As String = ("Please select a save to directory.")
 Public MSG_No_VideoURLS As String = ("Please add one or more video url's.")
 Public MSG_No_url_To_Remove As String = ("Please select a url to remove.")
 Public MSG_URL_Already_Exist As String = ("This url has already been added.")
-Public MSG_ClearList As String = ("Clear url list,Are you sure?.")
+Public MSG_ClearList As String = ("Clear url list,Are you sure?")
 Public MSG_ClearList_No As String = ("No")
 Public MSG_ClearList_Yes As String = ("Yes")
-
-Public Sub _new()
-  
-End
 
 Public Sub Form_Open()
   
@@ -143,13 +141,15 @@ Public Sub HttpClient1_Finished()
   TextBox_VideoURL.Clear
 End
 
-'Public Sub IconView_VideoURL_DblClick()
+Public Sub ListView_VideoURL_DblClick()
   
-  'If Not ListView_VideoURL.Key = "" Then
-    'FWebBrowser.WebView1.Url = ListView_VideoURL.Item.Key
-  'Endif
+  If Not ListView_VideoURL.Key = "" Then
+    URLKryFromItem = ListView_VideoURL.Key
+    URLKryFromItem_Boolean = True
+    FWebBrowser.Show
+  Endif
   
-'End
+End
 
 Public Sub Button_WebBrowser_Click()  
 

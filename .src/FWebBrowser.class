@@ -7,7 +7,13 @@ Public Sub Form_Open()
   FWebBrowser.Height = 600
 '  WebView1.UserAgent = "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"
   WebSettings[WebSettings.PluginsEnabled] = True
+  
+If FMain.URLKryFromItem_Boolean = True Then
+  WebView1.Url = FMain.URLKryFromItem
+  FMain.URLKryFromItem_Boolean = False
+  Else
   WebView1.Url = "Html1.html"
+Endif
 
 End
 
