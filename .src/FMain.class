@@ -203,9 +203,9 @@ Public Sub TrayMenu1_Quit_Click()
   
 End
 
-Public Sub TextArea1_Change()
+Public Sub TextArea_Output_Change()
   
-  TextArea1.Select(TextArea1.Length, 0)
+  TextArea_Output.Select(TextArea_Output.Length, 0)
   
 End
 
@@ -215,7 +215,7 @@ Public Sub Button_Cancel_Click()
     ListView_VideoURL.Clear
     Panel1.Visible = False
     Panel2.Visible = False
-    TextArea1.Clear
+    TextArea_Output.Clear
     FWebBrowser.ToolButton_CopyURL.Enabled = True
   Else
     If isRunning("youtube-dl") = True Then
@@ -269,7 +269,7 @@ Public Sub Process_Read()
   Dim sLine As String
   
   sLine = Read #Last, -256
-  TextArea1.Text = TextArea1.Text & sLine
+  TextArea_Output.Text = TextArea_Output.Text & sLine
   If sLine = "Finished\n" Then
     Button_Cancel.Text = "Done"
     Button_Cancel.Picture = Picture["icon:/16/ok"]
