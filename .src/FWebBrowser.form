@@ -33,8 +33,9 @@
       MoveScaled(98,0,4,4)
       Picture = Picture["icon:/22/internet"]
     }
-    { ToolButton_CopyURL ToolButton
+    { !ToolButton_CopyURL ToolButton
       MoveScaled(102,0,4,4)
+      #Public = True
       Picture = Picture["icon:/22/add"]
     }
   }

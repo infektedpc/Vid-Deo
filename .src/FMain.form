@@ -101,12 +101,6 @@
     Text = ("WebBrowser")
     Picture = Picture["icon:/16/internet"]
   }
-  { Button3 Button
-    MoveScaled(0,28,12,4)
-    Visible = False
-    Enabled = False
-    Text = ("Button3")
-  }
   { Button_ClearList Button
     MoveScaled(68,11,4,4)
     Picture = Picture["icon:/16/trash"]
@@ -136,8 +130,9 @@
       ReadOnly = True
     }
   }
-  { Panel1 Panel
+  { !Panel1 Panel
     MoveScaled(0,49,74,4)
+    #Public = True
     Visible = False
     Background = Color.Background
     Arrangement = Arrange.Column

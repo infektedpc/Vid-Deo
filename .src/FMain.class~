@@ -23,7 +23,7 @@ Public MSG_ClearList_Yes As String = ("Yes")
 Public Sub Form_Open()
   
   FMain.Center
-
+  
   WebSettings.IconDatabase.Path = File.Dir(File.Dir(Temp$()))
   WebSettings.Fonts.FixedFont = "Monospace"
   WebSettings[WebSettings.PluginsEnabled] = True
@@ -36,16 +36,17 @@ Public Sub Form_Open()
     TextBox_SaveTo.Text = "/home/" & System.User.Name & "/Videos"
   Endif
   
-   Shell "youtube-dl --version" To YoutubeDL_sOutput
-    Label_YouTubeDL_Version.text = "Youtube-dl Version: " & YoutubeDL_sOutput
+  Shell "youtube-dl --version" To YoutubeDL_sOutput
+  Label_YouTubeDL_Version.text = "Youtube-dl Version: " & YoutubeDL_sOutput
+  
 End
 
 Public Sub Button_VideoURL_Click()
-
-If Clipboard.Text = 1 Then
-TextBox_VideoURL.Text = Clipboard.Paste()
-  Add_VideoURL()
-Endif
+  
+  If Clipboard.Text = 1 Then
+    TextBox_VideoURL.Text = Clipboard.Paste()
+    Add_VideoURL()
+  Endif
   
 End
 
@@ -100,22 +101,22 @@ Public Sub Button_Download_Click()
       Panel2.Visible = True
       Button_Cancel.Text = "Cancel"
       Button_Cancel.Picture = Picture["icon:/16/cancel"]
-    
-  
-  Fmain.ListView_VideoURL.MoveFirst
-  Video_URLS = ""
-  
-  For iCount = 1 To Fmain.ListView_VideoURL.Count
-    Video_URLS = Video_URLS & " " & Fmain.ListView_VideoURL.Item.Key
-    Fmain.ListView_VideoURL.MoveNext
-  Next
-  
-  VideoD_sOutput = ""
-  If Fmain.ComboBox1.index = 0 Then
-    Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl -f mp4 " & Video_URLS & "&& echo Finished" For Read As "Process"
-  Else
-    Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl -f webm " & Video_URLS & "&& echo Finished" For Read As "Process"
-  Endif
+      FWebBrowser.ToolButton_CopyURL.Enabled = False
+      
+      Fmain.ListView_VideoURL.MoveFirst
+      Video_URLS = ""
+      
+      For iCount = 1 To Fmain.ListView_VideoURL.Count
+        Video_URLS = Video_URLS & " " & Fmain.ListView_VideoURL.Item.Key
+        Fmain.ListView_VideoURL.MoveNext
+      Next
+      
+      VideoD_sOutput = ""
+      If Fmain.ComboBox1.index = 0 Then
+        Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl -f mp4 " & Video_URLS & "&& echo Finished" For Read As "Process"
+      Else
+        Shell "cd " & FMain.TextBox_SaveTo.Text & ";youtube-dl -f webm " & Video_URLS & "&& echo Finished" For Read As "Process"
+      Endif
     Endif
   Endif
   
@@ -136,9 +137,12 @@ Public Sub Button_About_Click()
 End
 
 Public Sub HttpClient1_Finished()
+  
   Dim TempImage As Picture = image.Load("~/Pictures/Tempthumb.jpg").Stretch(64, 32).Picture
+  
   ListView_VideoURL.Add(TextBox_VideoURL.Text, VideoURLTile, TempImage)
   TextBox_VideoURL.Clear
+  
 End
 
 Public Sub ListView_VideoURL_DblClick()
@@ -152,29 +156,14 @@ Public Sub ListView_VideoURL_DblClick()
 End
 
 Public Sub Button_WebBrowser_Click()  
-
+  
   FWebBrowser.Show
   
 End
 
-
 Public Sub TrayIcon1_Menu()
-
+  
   TrayMenu1.Popup()
-
-End
-
-Public Sub Button3_Click()
-  
-  Dim Video_URLSs As String = ""
-  Dim iCount As Integer
-  
-  ListView_VideoURL.MoveFirst
-  For iCount = 1 To ListView_VideoURL.Count
-    Video_URLSs = Video_URLSs & " " & ListView_VideoURL.Item.Key
-    ListView_VideoURL.MoveNext
-  Next
-  Print Video_URLSs;
   
 End
 
@@ -183,35 +172,35 @@ Public Sub Button_ClearList_Click()
   If Message.Question(MSG_ClearList, MSG_ClearList_Yes, MSG_ClearList_No) = 1 Then
     ListView_VideoURL.Clear
   Endif
-
+  
 End
 
 Public Sub Form_Close()
-
-    TrayIcon1.Delete
-
+  
+  TrayIcon1.Delete
+  
 End
 
 Public Sub TrayMenu1_WebBrowser_Click()
-
-   FWebBrowser.Show
-
+  
+  FWebBrowser.Show
+  
 End
 
 Public Sub TrayMenu1_Videos_Click()
-
+  
   If Not TextBox_SaveTo.Text = "" Then
     Shell "xdg-open " & TextBox_SaveTo.Text
   Else
     Message.Info(MSG_No_SaveTo_Dir)
   Endif
-
+  
 End
 
 Public Sub TrayMenu1_Quit_Click()
-
+  
   Me.Close
-
+  
 End
 
 Public Sub TextArea1_Change()
@@ -219,21 +208,26 @@ Public Sub TextArea1_Change()
   TextArea1.Select(TextArea1.Length, 0)
   
 End
+
 Public Sub Button_Cancel_Click()
-  If Not Button_Cancel.Text = "Cancel" Then
-  If isRunning("youtube-dl") = True Then
-    If Message.Question("There are videos currently downloading.\n Do you want to cancel the download?", "Yes", "No") = 1 Then
-      Shell "killall -SIGTERM youtube-dl"
-    Endif
-  Endif
+  
+  If Button_Cancel.Text = "Done " Then
+    ListView_VideoURL.Clear
+    Panel1.Visible = False
+    Panel2.Visible = False
+    TextArea1.Clear
+    FWebBrowser.ToolButton_CopyURL.Enabled = True
   Else
-     Panel1.Visible = False
-     Panel2.Visible = False
-  Endif
+    If isRunning("youtube-dl") = True Then
+      If Message.Question("There are videos currently downloading.\n Do you want to cancel the download?", "Yes", "No") = 1 Then
+        Shell "killall -SIGTERM youtube-dl"
+      Endif
+    Endif
+    
 End
 
-  Public Sub Add_VideoURL()
- 
+Public Sub Add_VideoURL()
+  
   If Not TextBox_VideoURL.Text = "" Then
     If InStr(TextBox_VideoURL.Text, "http://") = 1 Or InStr(TextBox_VideoURL.Text, "https://") = 1 Then
       If Not ListView_VideoURL.Exist(TextBox_VideoURL.Text) Then
@@ -242,14 +236,9 @@ End
         If Not YoutubeDL_sOutput = "" Then
           VideoURLTile = YoutubeDL_sOutput
           Shell "youtube-dl --get-thumbnail " & TextBox_VideoURL.Text To YoutubeDL_sOutput
-         
           httpclient1.url = YoutubeDL_sOutput
           httpClient1.get(Null, "~/Pictures/Tempthumb.jpg")
           VideoURLImage = YoutubeDL_sOutput
-          
-         'ListView_VideoURL.Add(TextBox_VideoURL.Text, VideoURLTile, Picture.Load("fake.png"))
-         'ListView_VideoURL.SetFocus
-         'TextBox_VideoURL.Clear
         Endif
       Else
         Message(MSG_URL_Already_Exist)
@@ -267,7 +256,7 @@ End
 Public Function isRunning(sProcess As String) As Boolean
   
   Dim sOutput As String
-  
+
   Exec ["pgrep", "-x", "-c", Shell(sProcess)] To sOutput
   If CInt(Trim(sOutput)) > 0 Then Return True
   Return False
@@ -277,9 +266,8 @@ End
 Public Sub Process_Read()
   
   Dim sLine As String
-  
+
   sLine = Read #Last, -256
-  
   TextArea1.Text = TextArea1.Text & sLine
   If sLine = "Finished\n" Then
     Button_Cancel.Text = "Done"
