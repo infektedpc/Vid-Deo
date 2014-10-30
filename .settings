@@ -9,10 +9,7 @@ ShowHidden=True
 Geometry=[500,451,210,210]
 
 [OpenFile]
-File[1]=".src/FMain.form"
-Active=2
-File[2]=".src/FMain.class:222.43"
-Count=2
+Count=0
 
 [Watches]
 Count=0

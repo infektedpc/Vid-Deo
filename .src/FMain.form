@@ -28,7 +28,6 @@
   { !TextBox_VideoURL TextBox
     MoveScaled(13,1,54,4)
     #Public = True
-    Text = ("https://www.youtube.com/watch?v=WINhrrD5m40")
   }
   { !Button_VideoURL Button
     MoveScaled(68,1,4,4)
