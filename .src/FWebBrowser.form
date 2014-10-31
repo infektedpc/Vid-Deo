@@ -11,18 +11,22 @@
     Border = Border.Etched
     { ToolButton_Home ToolButton
       MoveScaled(0,0,5,4)
+      ToolTip = ("Home")
       Picture = Picture["icon:/22/home"]
     }
     { ToolButton_Previous ToolButton
       MoveScaled(5,0,4,4)
+      ToolTip = ("Back")
       Picture = Picture["icon:/22/previous"]
     }
     { ToolButton_Next ToolButton
       MoveScaled(9,0,4,4)
+      ToolTip = ("Forward")
       Picture = Picture["icon:/22/right"]
     }
     { ToolButton_Refresh ToolButton
       MoveScaled(13,0,4,4)
+      ToolTip = ("Reload")
       Picture = Picture["icon:/22/refresh"]
     }
     { TextBox_URL TextBox
@@ -31,11 +35,13 @@
     }
     { ToolButton_Navigate ToolButton
       MoveScaled(98,0,4,4)
+      ToolTip = ("Navigate")
       Picture = Picture["icon:/22/internet"]
     }
     { !ToolButton_CopyURL ToolButton
       MoveScaled(102,0,4,4)
       #Public = True
+      ToolTip = ("Add URL to list")
       Picture = Picture["icon:/22/add"]
     }
   }

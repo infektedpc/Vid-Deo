@@ -26,17 +26,17 @@
     Text = ("Video URL:")
   }
   { !TextBox_VideoURL TextBox
-    MoveScaled(13,1,54,4)
+    MoveScaled(13,1,59,4)
     #Public = True
   }
   { !Button_VideoURL Button
     MoveScaled(68,6,4,4)
     #Public = True
-    ToolTip = ("Add URL from clipboard")
+    ToolTip = ("Add URL to list from clipboard")
     Picture = Picture["icon:/16/paste"]
   }
   { PictureBox_Clear PictureBox
-    MoveScaled(63,1,4,4)
+    MoveScaled(68,1,4,4)
     Picture = Picture["icon:/16/clear"]
     Alignment = Align.Center
   }
@@ -51,6 +51,7 @@
   }
   { Button_SaveTo Button
     MoveScaled(68,40,4,4)
+    ToolTip = ("Choose save directory")
     Picture = Picture["icon:/16/directory"]
   }
   { Button_OpenFolder Button
@@ -81,7 +82,7 @@
     List = [("Mp4"), ("Webm")]
   }
   { Button_About Button
-    MoveScaled(68,35,4,4)
+    MoveScaled(68,45,4,4)
     ToolTip = ("About Vid★Deo")
     Picture = Picture["icon:/16/info"]
   }
@@ -96,6 +97,7 @@
   }
   { Button_ClearList Button
     MoveScaled(68,16,4,4)
+    ToolTip = ("Remove all items from list")
     Picture = Picture["icon:/16/trash"]
   }
   { TrayIcon1 #TrayIcon
