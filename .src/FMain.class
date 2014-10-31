@@ -68,7 +68,7 @@ End
 
 Public Sub Button_SaveTo_Click()
   
-  Dialog.Title = "Select A Directory"
+  Dialog.Title = "Select a save directory"
   Dialog.Path = ""
   
   If Dialog.SelectDirectory() Then Return

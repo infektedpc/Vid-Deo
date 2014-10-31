@@ -51,7 +51,7 @@
   }
   { Button_SaveTo Button
     MoveScaled(68,40,4,4)
-    ToolTip = ("Choose a save directory")
+    ToolTip = ("Select a save directory")
     Picture = Picture["icon:/16/directory"]
   }
   { Button_OpenFolder Button
