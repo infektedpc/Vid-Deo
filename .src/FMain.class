@@ -169,7 +169,7 @@ End
 
 Public Sub Button_ClearList_Click()
   
-  If Not ListView_VideoURL.Count = 0 Then
+  If ListView_VideoURL.Count > 0 Then
     If Message.Question(MSG_ClearList, MSG_ClearList_Yes, MSG_ClearList_No) = 1 Then
       ListView_VideoURL.Clear
     Endif 
