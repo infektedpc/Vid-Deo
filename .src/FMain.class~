@@ -68,7 +68,7 @@ End
 
 Public Sub Button_SaveTo_Click()
   
-  Dialog.Title = "Choose a save directory"
+  Dialog.Title = "Select a save directory"
   Dialog.Path = ""
   
   If Dialog.SelectDirectory() Then Return
@@ -179,7 +179,12 @@ End
 
 Public Sub Form_Close()
   
+  If FWebBrowser.Closed
   TrayIcon1.Delete
+  Else
+    Stop Event
+    Fmain.Window.Minimized = True
+  Endif
   
 End
 

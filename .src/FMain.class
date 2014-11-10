@@ -179,7 +179,12 @@ End
 
 Public Sub Form_Close()
   
-  TrayIcon1.Delete
+  If FWebBrowser.Closed
+    TrayIcon1.Delete
+  Else
+    Stop Event
+    Fmain.Window.Minimized = True
+  Endif
   
 End
 
