@@ -138,10 +138,9 @@ End
 
 Public Sub HttpClient1_Finished()
   
-  Dim TempImage As Picture = image.Load("~/Pictures/Tempthumb.jpg").Stretch(64, 32).Picture
-  
-  ListView_VideoURL.Add(TextBox_VideoURL.Text, VideoURLTile, TempImage)
+  ListView_VideoURL.Add(TextBox_VideoURL.Text, VideoURLTile, Image.Load("/tmp/tempthumb.jpg").Stretch(64, 32).Picture)
   TextBox_VideoURL.Clear
+  Kill "/tmp/tempthumb.jpg"
   
 End
 
@@ -179,8 +178,8 @@ End
 
 Public Sub Form_Close()
   
-  If FWebBrowser.Closed
-  TrayIcon1.Delete
+  If FWebBrowser.Closed And If FVideoPlayer.Closed
+    TrayIcon1.Delete
   Else
     Stop Event
     Fmain.Window.Minimized = True
@@ -249,7 +248,7 @@ Public Sub Add_VideoURL()
           VideoURLTile = YoutubeDL_sOutput
           Shell "youtube-dl --get-thumbnail " & TextBox_VideoURL.Text To YoutubeDL_sOutput
           httpclient1.url = YoutubeDL_sOutput
-          httpClient1.get(Null, "~/Pictures/Tempthumb.jpg")
+          httpClient1.get(Null, "/tmp/tempthumb.jpg")
           VideoURLImage = YoutubeDL_sOutput
         Endif
       Else
@@ -277,13 +276,22 @@ End
 
 Public Sub Process_Read()
   
-  Dim sLine As String
+  Dim sShellOutput As String
+
+  While Not Eof(Last)
+    Read #Last, sShellOutput, Lof(Last)
+    TextArea_Output.Text = TextArea_Output.Text & sShellOutput
+  Wend 
   
-  sLine = Read #Last, -256
-  TextArea_Output.Text = TextArea_Output.Text & sLine
-  If sLine = "Finished\n" Then
+  If sShellOutput = "Finished\n" Then
     Button_Cancel.Text = "Done"
     Button_Cancel.Picture = Picture["icon:/16/ok"]
   Endif
+  
+End
+
+Public Sub Button_VideoPlayer_Click()
+  
+  FVideoPlayer.Show
   
 End

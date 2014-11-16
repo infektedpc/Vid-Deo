@@ -11,6 +11,7 @@ gb.form.dialog
 gb.net
 gb.net.curl
 gb.media
+gb.media.form
 gb.qt4.ext
 gb.qt4.webkit
 

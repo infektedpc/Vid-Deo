@@ -1,29 +1,27 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,64,40)
-  Text = ("Vid★Deo - Video Player")
-  Icon = Picture["Videod128x-icon.png"]
+  MoveScaled(0,0,102,62)
+  Text = ("Video Player")
+  Icon = Picture["icon:/16/video"]
+  Arrangement = Arrange.Horizontal
   { Panel1 Panel
-    MoveScaled(0,33,64,7)
-    { ToolButton_Play ToolButton
-      MoveScaled(2,2,5,4)
-      Picture = Picture["icon:/32/play"]
+    MoveScaled(0,0,67,62)
+    Expand = True
+    Arrangement = Arrange.Fill
+    { MediaView1 MediaView
+      MoveScaled(0,0,67,62)
+      Expand = True
+      URL = "/home/tim/Videos/Daniel Radcliffe Raps Blackalicious' 'Alphabet Aerobics'-aKdV5FvXLuI.webm"
     }
-    { ToolButton_Pause ToolButton
-      MoveScaled(8,2,5,4)
-      Picture = Picture["icon:/32/pause"]
-    }
-    { ToolButton_Stop ToolButton
-      MoveScaled(14,2,5,4)
-      Picture = Picture["icon:/32/stop"]
-    }
-    { ToolButton_OpenVideo ToolButton
-      MoveScaled(20,2,5,4)
-      Picture = Picture["icon:/32/open"]
-    }
-    { Slider1 Slider
-      MoveScaled(28,2,25,4)
+  }
+  { SidePanel1 SidePanel
+    MoveScaled(68,0,34,62)
+    Arrangement = Arrange.Vertical
+    Orientation = Align.Right
+    { ListView1 ListView
+      MoveScaled(1,0,32,62)
+      Expand = True
     }
   }
 }

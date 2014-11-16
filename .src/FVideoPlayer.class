@@ -1,14 +1,38 @@
 ' Gambas class file
 
-
-Public Sub ToolButton_Play_Click()
-
-
-
+Public Sub Form_Open()
+  
+  Dim Directory As String
+  Dim Files As String[]
+  Dim FileName As String
+  
+  ListView1.Clear
+  
+  Directory = FMain.TextBox_SaveTo.Text
+  Files = Dir(Directory, "*.mp4")
+  Files.Insert(Dir(Directory, "*.webm"))
+  
+  For Each FileName In Files
+    If Not ListView1.Exist(Directory & "/" & FileName) Then
+      ListView1.Add(Directory & "/" & FileName, FileName)
+    Endif
+  Next
+  
+  Me.Center
+  
 End
 
-Public Sub Form_Open()
-
+Public Sub ListView1_Click()
   
+  If Not ListView1.Key = "" Then
+    MediaView1.URL = ListView1.Key
+    'MediaView1.play
+  Endif
+  
+End
 
+Public Sub Form_Close()
+  
+  'MediaView1.Stop
+  
 End

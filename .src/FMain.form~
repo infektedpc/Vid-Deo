@@ -21,6 +21,11 @@
       Picture = Picture["icon:/16/quit"]
     }
   }
+  { Button_VideoPlayer Button
+    MoveScaled(68,35,4,4)
+    ToolTip = ("Video Player")
+    Picture = Picture["icon:/16/video"]
+  }
   { Label_Video Label
     MoveScaled(2,1,11,4)
     Text = ("Video URL:")
@@ -28,6 +33,7 @@
   { !TextBox_VideoURL TextBox
     MoveScaled(13,1,59,4)
     #Public = True
+    Text = ("http://www.youtube.com/watch?v=wMQvCCBbRK4")
   }
   { !Button_VideoURL Button
     MoveScaled(68,6,4,4)
@@ -71,7 +77,7 @@
     Picture = Picture["icon:/16/remove"]
   }
   { PictureBox1 PictureBox
-    MoveScaled(2,7,8,8)
+    MoveScaled(2,6,9,9)
     Picture = Picture["Videod128x-icon.png"]
     Stretch = True
   }
@@ -119,7 +125,6 @@
     Visible = False
     Background = Color.Background
     Expand = True
-    Arrangement = Arrange.Fill
     { !TextArea_Output TextArea
       MoveScaled(1,1,71,46)
       #Public = True
@@ -132,7 +137,7 @@
     Visible = False
     Background = Color.Background
     { !Button_Cancel Button
-      MoveScaled(57,1,16,4)
+      MoveScaled(56,0,16,4)
       #Public = True
       Text = ("Done")
       Picture = Picture["icon:/16/ok"]
